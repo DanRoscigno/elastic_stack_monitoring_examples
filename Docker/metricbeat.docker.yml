@@ -1,0 +1,65 @@
+metricbeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    # Reload module configs as they change:
+    reload.enabled: false
+
+metricbeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+      labels.dedot: true
+      templates:
+        - condition:
+            contains:
+              docker.container.image: elasticsearch
+          config:
+            - module: elasticsearch
+              metricsets:
+                # Note: Stack monitoring requires all of
+                # these metricsets to be enabled
+                - ccr
+                - enrich
+                - cluster_stats
+                - index
+                - index_recovery
+                - index_summary
+                - ml_job
+                - node_stats
+                - shard
+              period: 10s
+              hosts: "${data.host}:9200"
+              username: "elastic"
+              password: "foo"
+              # Note: the xpack.enabled boolean configures the
+              # index used for the monitoring data.  If this is 
+              # not set to true the monitoring data will be 
+              # written to the same index as all Metricbeat data
+              # and will not be present in the Stack Monitoring 
+              # app in Kibana.  When xpack.enabled is true the 
+              # monitoring data is written to the .monitoring 
+              # index.
+              xpack.enabled: true
+
+metricbeat.modules:
+- module: docker
+  metricsets:
+    - "container"
+    - "cpu"
+    - "diskio"
+    - "healthcheck"
+    - "info"
+    #- "image"
+    - "memory"
+    - "network"
+  hosts: ["unix:///var/run/docker.sock"]
+  period: 10s
+  enabled: true
+
+processors:
+  - add_cloud_metadata: ~
+
+output.elasticsearch:
+  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
+  username: '${ELASTICSEARCH_USERNAME:}'
+  password: '${ELASTICSEARCH_PASSWORD:}'
