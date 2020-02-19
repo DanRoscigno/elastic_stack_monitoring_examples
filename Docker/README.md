@@ -1,9 +1,9 @@
 ### Steps
 
 ### Grab this repo
-`git clone git@github.com:DanRoscigno/stack_monitoring.git`
+`git clone git@github.com:DanRoscigno/elastic_stack_monitoring_examples.git`
 
-`cd stack_monitoring/Docker/`
+`cd elastic_stack_monitoring_examples/Docker/`
 
 ### Start everything
 
@@ -75,7 +75,7 @@ then available in Stack Monitoring.
 ## Collecting Elastic Stack metrics
 
 Metricbeat is used to collect the metrics from Elasticsearch and Kibana.
-Here is the configuration for the Metricbeat `elasticsearch` module:
+Here is the configuration for the Metricbeat `elasticsearch` module (see the [complete file](https://github.com/DanRoscigno/elastic_stack_monitoring_examples/blob/master/Docker/metricbeat.docker.yml)):
 ```
 metricbeat.autodiscover:
   providers:
