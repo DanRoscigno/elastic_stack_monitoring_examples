@@ -58,6 +58,10 @@ metricbeat.modules:
 
 processors:
   - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+
+
+setup.ilm.check_exists: "false"
 
 output.elasticsearch:
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
