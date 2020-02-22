@@ -12,6 +12,19 @@ metricbeat.autodiscover:
       templates:
         - condition:
             contains:
+              docker.container.image: kibana
+          config:
+            - module: kibana
+              metricsets:
+                - stats
+              period: 10s
+              hosts: ["${data.host}:5601"]
+              #basepath: ""
+              username: "elastic"
+              password: "foo"
+              xpack.enabled: true
+        - condition:
+            contains:
               docker.container.image: elasticsearch
           config:
             - module: elasticsearch
