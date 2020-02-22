@@ -75,6 +75,7 @@ docker run \
   --network=course_stack \
   docker.elastic.co/beats/metricbeat:7.6.0 \
   setup -E setup.kibana.host=kibana:5601 \
+  -E setup.ilm.check_exists="true" \
   -E output.elasticsearch.hosts=["elasticsearch:9200"] \
   -E output.elasticsearch.username="elastic" \
   -E output.elasticsearch.password="foo"
@@ -96,7 +97,7 @@ docker run -d \
 
 
 
-echo "Deploying Filbeat\n"
+echo "Deploying Filebeat\n"
 
 docker run \
   --network=course_stack \
@@ -105,8 +106,6 @@ docker run \
   -E output.elasticsearch.hosts=["elasticsearch:9200"] \
   -E output.elasticsearch.username="elastic" \
   -E output.elasticsearch.password="foo"
-
-curl -L -O https://raw.githubusercontent.com/elastic/beats/6.6/deploy/docker/filebeat.docker.yml
 
 docker run -d \
   --name=filebeat \

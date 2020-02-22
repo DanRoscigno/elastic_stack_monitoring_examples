@@ -1,4 +1,4 @@
-### Steps
+# Steps
 
 ### Grab this repo
 `git clone git@github.com:DanRoscigno/elastic_stack_monitoring_examples.git`
