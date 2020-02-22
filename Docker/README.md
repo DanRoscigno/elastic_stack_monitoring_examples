@@ -11,7 +11,11 @@ You can simply run `./do-it-all.sh` and let it go.  While it is running
 open another terminal and look at `do-it-all.sh` to see what is 
 happening, and look at the configuration files that are being downloaded.
 
-Navigate to Kibana at http://localhost:5601
+### View monitoring information
+
+Navigate to Kibana at http://localhost:5601/app/monitoring and you should
+logs and metrics for Elasticsearch in the Stack Monitoring application.
+
 Username is elastic, password is foo
 
 # Monitoring the Elastic Stack
