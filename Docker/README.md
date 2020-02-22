@@ -18,6 +18,9 @@ logs and metrics for Elasticsearch in the Stack Monitoring application.
 
 Username is elastic, password is foo
 
+![Stack Monitoring](StackMonitoring.png)
+
+
 # Monitoring the Elastic Stack
 The configurations provided monitor the logs and metrics for
 Elasticsearch and Kibana using stack monitoring.
