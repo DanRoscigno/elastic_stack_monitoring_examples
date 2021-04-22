@@ -24,7 +24,7 @@ logs and metrics for Elasticsearch in the Stack Monitoring application.
 
 Username is elastic, password is foo
 
-![Stack Monitoring](StackMonitoring.png)
+![Stack Monitoring](Docker/StackMonitoring.png)
 
 
 # Monitoring the Elastic Stack
