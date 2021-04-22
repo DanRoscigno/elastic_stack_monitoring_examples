@@ -1,3 +1,9 @@
+# What is this?
+How to configure monitoring of the Elastic Stack running in Docker.  The Filebeat and Metricbeat configs are in the Docker/ dir, but the heart of how this is enabled is in the do-it-all.sh.  By simply adding labels to Elasticsearch and Kibana containers the Beats autodiscover the Elasticsearch and Kibana logs and metrics.  Look for lines similar to:
+```
+--label co.elastic.logs/module=elasticsearch \
+```
+
 # Steps
 
 ### Grab this repo
